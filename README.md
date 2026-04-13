@@ -22,12 +22,17 @@ Official templates should align with the current hackctl workflow:
 - `hackctl start`
 - `hackctl share`
 
+Near-term official templates are Node and npm based web templates.
+
+Merge requirements are defined in `TEMPLATE.md` and should be treated as the source of truth for template PR review.
+
 At a minimum, a template should include:
 
 - a root `hackctl.config.json`
-- a root `.env.example` when environment variables are required
+- `.env.example` coverage for required environment variables
 - a template-local `README.md`
 - the service directories referenced by `hackctl.config.json`
+- a `.gitignore` rule for `.hackctl/` runtime state
 
 ## Working In This Repo
 
