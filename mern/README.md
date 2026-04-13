@@ -26,6 +26,8 @@ Frontend requests should use `/api/*`. During development, Vite proxies `/api` t
 4. Start frontend:
    - `cd frontend && npm run dev`
 
+Runtime state written to `.hackctl/` is local-only and should stay untracked.
+
 ## API Endpoints
 
 - `GET /api/health`
