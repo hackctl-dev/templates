@@ -1,0 +1,24 @@
+{
+  "$schema": "https://hackctl.dev/schemas/hackctl.config.v1.json",
+  "name": "my-app",
+  "template": "pern",
+  "services": [
+    {
+      "name": "frontend",
+      "cwd": "frontend",
+      "run": "npm run dev",
+      "port": 3000
+    },
+    {
+      "name": "backend",
+      "cwd": "backend",
+      "run": "npm run dev",
+      "port": 5000,
+      "envFile": "backend/.env"
+    }
+  ],
+  "share": {
+    "defaultService": "frontend",
+    "defaultPort": 3000
+  }
+}
