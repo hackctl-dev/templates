@@ -1,10 +1,10 @@
-# MERN Template
+# MERN Todo Template
 
-This template provides a beginner-friendly MERN starter with a React frontend, Express backend, and MongoDB via Mongoose.
+This template provides a standardized Todo app using React + Vite frontend, Express backend, and MongoDB via Mongoose.
 
 ## Stack
 
-- Frontend: React + Vite
+- Frontend: React + Vite + Tailwind CSS
 - Backend: Node.js + Express + Mongoose
 - Database: MongoDB
 
@@ -13,41 +13,56 @@ This template provides a beginner-friendly MERN starter with a React frontend, E
 - Frontend: `3000`
 - Backend: `5000`
 
-Frontend requests should use `/api/*`. During development, Vite proxies `/api` to the backend.
+Frontend requests use `/api/*`. During development, Vite proxies `/api` to the backend.
 
-## Quick Start
+## Prerequisites
 
-1. Copy `backend/.env.example` to `backend/.env`.
-2. Optional: copy `frontend/.env.example` to `frontend/.env` if you need a non-default API proxy target.
-3. Install dependencies:
-   - `cd frontend && npm install`
-   - `cd ../backend && npm install`
-4. Start backend:
-   - `cd backend && npm run dev`
-5. Start frontend:
-   - `cd frontend && npm run dev`
+- Node.js `20+`
+- npm `10+`
+- A MongoDB database (local or hosted)
+
+## Setup
+
+1. Provision a MongoDB database.
+   - Local MongoDB example URI: `mongodb://127.0.0.1:27017/hackctl_mern`
+   - Hosted MongoDB (for example Atlas): create a cluster and copy the connection URI.
+2. Configure environment variables.
+   - Copy `backend/.env.example` to `backend/.env`.
+   - Set `MONGODB_URI` in `backend/.env` to your MongoDB connection string.
+   - Optional: copy `frontend/.env.example` to `frontend/.env` and set `VITE_API_PROXY_TARGET` if backend is not `http://localhost:5000`.
+3. Install dependencies.
+   - `cd backend && npm install`
+   - `cd ../frontend && npm install`
+4. Run the app.
+   - From the project root: `hackctl start`
+   - Or manually in two terminals:
+     - `cd backend && npm run dev`
+     - `cd frontend && npm run dev`
 
 Runtime state written to `.hackctl/` is local-only and should stay untracked.
 
 ## Environment
 
 - `backend/.env`
-  - `MONGODB_URI`: local MongoDB connection string.
+  - `MONGODB_URI`: MongoDB connection string.
   - `PORT`: backend port (default `5000`).
 - `frontend/.env` (optional)
-  - `VITE_API_PROXY_TARGET`: Vite dev proxy target for `/api` (default `http://localhost:5000`).
+  - `VITE_API_PROXY_TARGET`: Vite proxy target for `/api` (default `http://localhost:5000`).
 
-## API Endpoints
+## Database Notes
 
-- `GET /api/health`
-- `GET /api/users`
-- `POST /api/users`
+- No manual SQL migrations are required.
+- The backend creates and uses the `todos` collection automatically via Mongoose models.
 
-Example request body for `POST /api/users`:
+## API Contract
 
-```json
-{
-  "name": "Ada Lovelace",
-  "email": "ada@example.com"
-}
-```
+- `GET /api/todos`
+  - response: `{ "todos": [{ "id", "title", "completed", "createdAt" }] }`
+- `POST /api/todos`
+  - body: `{ "title": "Write docs" }`
+  - response: `{ "todo": { ... } }`
+- `PUT /api/todos/:id`
+  - body: `{ "title": "Updated" }` or `{ "completed": true }`
+  - response: `{ "todo": { ... } }`
+- `DELETE /api/todos/:id`
+  - response: `{ "success": true }`
