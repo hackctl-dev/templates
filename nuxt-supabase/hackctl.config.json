@@ -1,0 +1,17 @@
+{
+  "$schema": "https://hackctl.dev/schemas/hackctl.config.v1.json",
+  "name": "my-app",
+  "template": "nuxt-supabase",
+  "services": [
+    {
+      "name": "app",
+      "cwd": ".",
+      "run": "npm run dev",
+      "port": 3000
+    }
+  ],
+  "share": {
+    "defaultService": "app",
+    "defaultPort": 3000
+  }
+}
