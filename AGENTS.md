@@ -42,8 +42,10 @@ Recommended implementation order:
 3. Ensure `.gitignore` includes `.hackctl/`.
 4. For official templates, keep service run commands npm based (`npm run ...`) and ensure each service has a `package.json`.
 5. Add or update `.env.example` coverage.
-6. Ensure frontend API routing uses `/api` and env-driven proxy behavior.
-7. Update template-local README with setup and runtime details.
+6. Ensure frontend API routing uses `/api` and the standardized Todo CRUD route contract.
+7. Use Tailwind CSS and keep the shared Todo layout consistent with other official templates.
+8. Update template-local README with setup and runtime details.
+9. For Supabase templates, keep schema in `supabase/migrations` and document the `supabase db push` workflow.
 
 Contributor output expectations:
 

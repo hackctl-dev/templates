@@ -11,6 +11,10 @@ Templates in this repo are the source of truth for scaffolded hackctl projects. 
 Templates live in their own top-level directories:
 
 - `mern/`
+- `pern/`
+- `next-supabase/`
+- `sveltekit-supabase/`
+- `nuxt-supabase/`
 
 Each template is expected to carry its own local documentation and runtime files.
 
@@ -23,6 +27,8 @@ Official templates should align with the current hackctl workflow:
 - `hackctl share`
 
 Near-term official templates are Node and npm based web templates.
+
+Current standardized app target is a Todo app with shared `/api/todos` CRUD route behavior and Tailwind-based UI consistency across templates.
 
 Merge requirements are defined in `TEMPLATE.md` and should be treated as the source of truth for template PR review.
 
@@ -46,4 +52,10 @@ Changes here affect newly scaffolded projects even if the CLI code does not chan
 
 ## Current Status
 
-The repo currently contains one official template, `mern`. Additional templates are planned, but they are not part of the shipped MVP yet.
+The repo currently ships five official templates:
+
+- `mern`
+- `pern`
+- `next-supabase`
+- `sveltekit-supabase`
+- `nuxt-supabase`
