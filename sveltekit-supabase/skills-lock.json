@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "skills": {
+    "supabase": {
+      "source": "supabase/agent-skills",
+      "sourceType": "github",
+      "computedHash": "3bc4f56943a13f4fe355742a4b3b30c56008e6d265ae71f19c592410b5f5a01f"
+    },
+    "supabase-postgres-best-practices": {
+      "source": "supabase/agent-skills",
+      "sourceType": "github",
+      "computedHash": "abf015aafed757edaf2a329299fc106abebdc53bc7f089e92e1f762ed3d8f117"
+    },
+    "svelte-code-writer": {
+      "source": "sveltejs/ai-tools",
+      "sourceType": "github",
+      "computedHash": "c0e2cce9855f8e312cbb0a05aef164b4659c672d7723e4e598ffa6bc94890542"
+    },
+    "svelte5-best-practices": {
+      "source": "ejirocodes/agent-skills",
+      "sourceType": "github",
+      "computedHash": "ce40e28405a4c17006580d6766edf2deddfad8893c7887b73c68cb71644ceadb"
+    },
+    "webapp-testing": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "5a6a18c0137cfbabec058e86fc1c8f6919d846a7b2a34ee978cc8ced866ee2e5"
+    }
+  }
+}
