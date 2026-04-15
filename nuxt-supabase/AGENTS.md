@@ -2,6 +2,34 @@
 
 This file is specific to the `nuxt-supabase` template.
 
+## hackctl Context
+
+- This template is scaffolded by `hackctl create --template nuxt-supabase`.
+- `hackctl start` reads service definitions from `hackctl.config.json`.
+- `hackctl share` uses `share.defaultService` and `share.defaultPort` from `hackctl.config.json`.
+
+## hackctl.config.json Contract
+
+- Keep the schema URL as `https://hackctl.dev/schemas/hackctl.config.v1.json`.
+- Keep the app service aligned with the real runtime contract:
+  - `name: app`
+  - `cwd: .`
+  - `run: npm run dev`
+  - `port: 3000`
+- If service names, ports, or folder layout change, update `hackctl.config.json` and `README.md` together.
+
+## Runtime State
+
+- `hackctl start` and `hackctl share` write local runtime data to `.hackctl/state.json`.
+- `.hackctl/` must stay gitignored.
+- Never commit `.hackctl/state.json` or other local runtime artifacts.
+
+## AI Guidance Files
+
+- `AGENTS.md` is the canonical guidance file.
+- `CLAUDE.md` and `GEMINI.md` should remain lightweight pointers to this file.
+- Keep guidance grounded in shipped behavior for this template.
+
 ## Supabase Schema Changes
 
 - Keep schema changes in `supabase/migrations/`.
