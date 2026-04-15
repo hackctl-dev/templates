@@ -2,6 +2,42 @@
 
 This repo contains the official project templates used by `hackctl create`.
 
+## Install hackctl
+
+Install the CLI before scaffolding one of these templates.
+
+Supported release platforms:
+
+- Windows x64
+- macOS Intel
+- macOS Apple Silicon
+- Linux x64
+- Linux ARM64
+
+Windows x64:
+
+```powershell
+irm https://hackctl.dev/install.ps1 | iex
+```
+
+macOS Intel and Apple Silicon:
+
+```bash
+curl -fsSL https://hackctl.dev/install.sh | sh
+```
+
+Linux x64 and ARM64:
+
+```bash
+curl -fsSL https://hackctl.dev/install.sh | sh
+```
+
+Then scaffold a project:
+
+```bash
+hackctl create
+```
+
 ## Purpose
 
 Templates in this repo are the source of truth for scaffolded hackctl projects. Each template should be runnable by the CLI with as little manual setup as possible and should stay beginner-friendly.
