@@ -24,6 +24,9 @@ Each official template should include:
 - `.env.example` coverage for required environment variables
 - a local `README.md`
 - a `.gitignore` entry for `.hackctl/`
+- a root `AGENTS.md` file as canonical AI project guidance
+- root `CLAUDE.md` and `GEMINI.md` files that point to `AGENTS.md`
+- curated skills in `.agents/skills/*/SKILL.md` with stack-appropriate defaults
 
 ## Verification
 
@@ -39,13 +42,15 @@ Recommended implementation order:
 
 1. Build `hackctl.config.json` first.
 2. Align folder layout with `services[].cwd` and `share` settings.
-3. Ensure `.gitignore` includes `.hackctl/`.
-4. For official templates, keep service run commands npm based (`npm run ...`) and ensure each service has a `package.json`.
-5. Add or update `.env.example` coverage.
-6. Ensure frontend API routing uses `/api` and the standardized Todo CRUD route contract.
-7. Use Tailwind CSS and keep the shared Todo layout consistent with other official templates.
-8. Update template-local README with setup and runtime details.
-9. For Supabase templates, keep schema in `supabase/migrations` and document the `supabase db push` workflow.
+3. Add `AGENTS.md` plus `CLAUDE.md` and `GEMINI.md` pointers.
+4. Add curated `.agents/skills/*/SKILL.md` entries for the template stack.
+5. Ensure `.gitignore` includes `.hackctl/`.
+6. For official templates, keep service run commands npm based (`npm run ...`) and ensure each service has a `package.json`.
+7. Add or update `.env.example` coverage.
+8. Ensure frontend API routing uses `/api` and the standardized Todo CRUD route contract.
+9. Use Tailwind CSS and keep the shared Todo layout consistent with other official templates.
+10. Update template-local README with setup and runtime details.
+11. For Supabase templates, keep schema in `supabase/migrations` and document the `supabase db push` workflow.
 
 Contributor output expectations:
 

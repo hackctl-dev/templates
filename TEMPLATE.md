@@ -19,6 +19,10 @@ Each template must include:
 - root `.gitignore` with `.hackctl/`
 - `.env.example` coverage for required environment variables
 - template-local `README.md`
+- root `AGENTS.md` as canonical agent instructions
+- root `CLAUDE.md` that points to `AGENTS.md`
+- root `GEMINI.md` that points to `AGENTS.md`
+- curated skills in `.agents/skills/*/SKILL.md`
 
 ## hackctl.config.json Requirements
 
@@ -43,6 +47,14 @@ For templates that use Supabase:
 - Include `supabase/config.toml` at the template root.
 - Include tracked SQL migrations under `supabase/migrations/`.
 - README must document the login/link/migration/push flow and reference the migration path.
+
+## AI-Ready Template Requirements
+
+- `AGENTS.md` is the single source of truth for agent workflow and project constraints.
+- `CLAUDE.md` and `GEMINI.md` must stay thin pointer files that direct tools to `AGENTS.md`.
+- Curated skills must be committed in `.agents/skills/*/SKILL.md`.
+- Skill selection should be stack-aware (for example, `*-supabase` templates include at least one Supabase-focused skill).
+- Skills should come from reputable, maintained sources and stay intentionally small.
 
 ## Networking and API Requirements
 
@@ -87,6 +99,8 @@ Template PRs should confirm all of the following:
 - [ ] Template meets every requirement in `TEMPLATE.md`.
 - [ ] `hackctl.config.json` matches the schema URL and structure.
 - [ ] `.gitignore` includes `.hackctl/`.
+- [ ] Template includes `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` with `AGENTS.md` as source of truth.
+- [ ] Template includes curated `.agents/skills/*/SKILL.md` entries; `*-supabase` templates include a Supabase-focused skill.
 - [ ] Frontend `/api` routing and env-driven proxy behavior are in place.
 - [ ] Supabase templates include `supabase/migrations` and a documented `db push` workflow.
 - [ ] No secrets or generated artifacts are included in the diff.
