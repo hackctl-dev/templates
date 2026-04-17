@@ -61,6 +61,9 @@ Official templates should align with the current hackctl workflow:
 - `hackctl create`
 - `hackctl start`
 - `hackctl share`
+- `hackctl deploy`
+- `hackctl status`
+- `hackctl destroy`
 
 Near-term official templates are Node and npm based web templates.
 
@@ -77,6 +80,7 @@ Merge requirements are defined in `TEMPLATE.md` and should be treated as the sou
 At a minimum, a template should include:
 
 - a root `hackctl.config.json`
+- a root `deploy` config block with `runtime: pm2` and `mode: dev`
 - `.env.example` coverage for required environment variables
 - a template-local `README.md`
 - root `AGENTS.md` plus `CLAUDE.md` and `GEMINI.md` pointer files
@@ -90,9 +94,17 @@ Changes here affect newly scaffolded projects even if the CLI code does not chan
 
 - keep the scaffold simple and beginner-friendly
 - preserve the `hackctl.config.json` contract expected by the CLI
+- keep the current deploy contract aligned with `deploy.runtime` and `deploy.mode`
 - avoid committing secrets or machine-specific files
 - avoid committing dependency directories unless there is a specific reason
 - local test files like `backend/.env` and `*/node_modules/` are fine only when they stay untracked and covered by the template `.gitignore`
+
+Current deploy assumptions for official templates:
+
+- `deploy.runtime` is `pm2`
+- `deploy.mode` is `dev`
+- the remote deploy path currently targets Ubuntu or Debian VPS hosts over SSH
+- future `deploy.mode: prod` work should keep the full app reachable through one public port
 
 ## Current Status
 

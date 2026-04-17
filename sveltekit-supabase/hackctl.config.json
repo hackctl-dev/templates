@@ -13,5 +13,9 @@
   "share": {
     "defaultService": "app",
     "defaultPort": 3000
+  },
+  "deploy": {
+    "runtime": "pm2",
+    "mode": "dev"
   }
 }

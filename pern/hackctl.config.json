@@ -20,5 +20,9 @@
   "share": {
     "defaultService": "frontend",
     "defaultPort": 3000
+  },
+  "deploy": {
+    "runtime": "pm2",
+    "mode": "dev"
   }
 }

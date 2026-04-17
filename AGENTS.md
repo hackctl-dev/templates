@@ -20,6 +20,7 @@ Changes here affect future scaffolded projects. Treat template edits as product 
 Each official template should include:
 
 - `hackctl.config.json`
+- `hackctl.config.json` with a `deploy` block using the current supported official values (`runtime: pm2`, `mode: dev`)
 - a clear service layout that matches the config
 - `.env.example` coverage for required environment variables
 - a local `README.md`
@@ -46,11 +47,13 @@ Recommended implementation order:
 4. Add curated `.agents/skills/*/SKILL.md` entries for the template stack.
 5. Ensure `.gitignore` includes `.hackctl/`.
 6. For official templates, keep service run commands npm based (`npm run ...`) and ensure each service has a `package.json`.
-7. Add or update `.env.example` coverage.
-8. Ensure frontend API routing uses `/api` and the standardized Todo CRUD route contract.
-9. Use Tailwind CSS and keep the shared Todo layout consistent with other official templates.
-10. Update template-local README with setup and runtime details.
-11. For Supabase templates, keep schema in `supabase/migrations` and document the `supabase db push` workflow.
+7. Keep the template deploy block aligned with the current remote deploy contract (`runtime: pm2`, `mode: dev`).
+8. Add or update `.env.example` coverage.
+9. Ensure frontend API routing uses `/api` and the standardized Todo CRUD route contract.
+10. Use Tailwind CSS and keep the shared Todo layout consistent with other official templates.
+11. Update template-local README with setup and runtime details.
+12. For Supabase templates, keep schema in `supabase/migrations` and document the `supabase db push` workflow.
+13. Plan future prod-mode work so the full app can be reached through one public service and one public port.
 
 Contributor output expectations:
 

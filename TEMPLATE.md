@@ -7,7 +7,7 @@ If a template does not meet these requirements, it should not be merged.
 ## Scope
 
 - Official templates are currently web-first.
-- Official templates must support the shipped CLI workflow: `hackctl create`, `hackctl start`, and `hackctl share`.
+- Official templates must support the shipped CLI workflow: `hackctl create`, `hackctl start`, `hackctl share`, and the current `hackctl deploy` contract.
 - Near-term official templates are Node and npm based.
 - Official templates in this phase implement the same Todo app shape.
 
@@ -28,17 +28,23 @@ Each template must include:
 
 - Must be valid JSON and use this schema URL:
   - `https://hackctl.dev/schemas/hackctl.config.v1.json`
-- Must include `name`, `template`, `services`, and `share`.
+- Must include `name`, `template`, `services`, `share`, and `deploy`.
 - `services` must be an ordered array with valid service definitions:
   - `name`, `cwd`, `run`, `port` (optional `envFile`)
 - `share.defaultService` must point to an existing service.
 - `share.defaultPort` must be valid and align with the intended public entrypoint.
+- `deploy.runtime` is required.
+- `deploy.mode` should be present; current official templates use `dev`.
+- Current supported official deploy values are:
+  - `runtime: pm2`
+  - `mode: dev`
 
 ## Runtime Requirements
 
 - Service run commands must be npm based (`npm run ...`).
 - Template must run on Node 20+ and npm 10+.
 - Do not require pnpm, yarn, bun, or Docker for the default local path.
+- Current remote deploy path assumes PM2 can run the template using the same npm scripts defined in `services[].run`.
 
 ## Supabase Template Requirements
 
@@ -61,6 +67,8 @@ For templates that use Supabase:
 - Frontend API calls should use relative `/api/*` paths.
 - Frontend development proxy target must be env driven, not hardcoded.
 - Do not require `/api/health` for merge.
+- Future `deploy.mode: prod` requirement: the full app must be reachable through one public service and one public port.
+- For split frontend/backend templates like MERN and PERN, prod mode should let the backend serve built frontend assets or provide an equivalent single-entrypoint path.
 
 ## Todo App Contract
 
@@ -91,6 +99,7 @@ For templates that use Supabase:
 - README must list service ports and basic run commands.
 - README must explain env setup and API routing expectations.
 - `.env.example` should include clear variable names and usable example values.
+- README should document the current deploy runtime and mode when the template ships with deploy support.
 
 ## PR Merge Checklist
 
@@ -98,6 +107,7 @@ Template PRs should confirm all of the following:
 
 - [ ] Template meets every requirement in `TEMPLATE.md`.
 - [ ] `hackctl.config.json` matches the schema URL and structure.
+- [ ] `hackctl.config.json` includes `deploy.runtime` and `deploy.mode` with the current supported official values.
 - [ ] `.gitignore` includes `.hackctl/`.
 - [ ] Template includes `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` with `AGENTS.md` as source of truth.
 - [ ] Template includes curated `.agents/skills/*/SKILL.md` entries; `*-supabase` templates include a Supabase-focused skill.

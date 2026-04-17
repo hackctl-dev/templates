@@ -46,6 +46,20 @@ npx supabase db push
 
 Runtime state written to `.hackctl/` is local-only and should stay untracked.
 
+## Deploy
+
+This template ships with:
+
+- `deploy.runtime: pm2`
+- `deploy.mode: dev`
+
+Current remote deploy behavior:
+
+- `hackctl deploy` uploads the current project to an Ubuntu or Debian VPS over SSH
+- the app runs remotely with `npm run dev` under PM2 on port `3000`
+- the remote Cloudflare tunnel points at the app service on port `3000`
+- `.hackctl/deploy.json` stores the saved deploy target and key path locally for later `hackctl status` and `hackctl destroy` runs
+
 ## Supabase Migration Workflow
 
 - This template keeps schema migrations in `supabase/migrations/`.

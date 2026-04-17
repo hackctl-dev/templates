@@ -41,6 +41,21 @@ Frontend requests use `/api/*`. During development, Vite proxies `/api` to the b
 
 Runtime state written to `.hackctl/` is local-only and should stay untracked.
 
+## Deploy
+
+This template ships with:
+
+- `deploy.runtime: pm2`
+- `deploy.mode: dev`
+
+Current remote deploy behavior:
+
+- `hackctl deploy` uploads the current project to an Ubuntu or Debian VPS over SSH
+- the frontend and backend both run with `npm run dev` under PM2
+- the remote Cloudflare tunnel points at the frontend on port `3000`
+- Vite continues proxying `/api` to the backend on port `5000`
+- `.hackctl/deploy.json` stores the saved deploy target and key path locally for later `hackctl status` and `hackctl destroy` runs
+
 ## Environment
 
 - `backend/.env`

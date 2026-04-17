@@ -7,6 +7,8 @@ This file is specific to the `nuxt-supabase` template.
 - This template is scaffolded by `hackctl create --template nuxt-supabase`.
 - `hackctl start` reads service definitions from `hackctl.config.json`.
 - `hackctl share` uses `share.defaultService` and `share.defaultPort` from `hackctl.config.json`.
+- `hackctl deploy` reads the template `deploy` block and currently expects `runtime: pm2` with `mode: dev`.
+- `hackctl status` and `hackctl destroy` read saved deploy metadata from `.hackctl/deploy.json`.
 
 ## hackctl.config.json Contract
 
@@ -16,13 +18,17 @@ This file is specific to the `nuxt-supabase` template.
   - `cwd: .`
   - `run: npm run dev`
   - `port: 3000`
+- Keep the deploy block aligned with the current remote contract:
+  - `runtime: pm2`
+  - `mode: dev`
 - If service names, ports, or folder layout change, update `hackctl.config.json` and `README.md` together.
 
 ## Runtime State
 
 - `hackctl start` and `hackctl share` write local runtime data to `.hackctl/state.json`.
+- `hackctl deploy` writes remote deploy metadata to `.hackctl/deploy.json`.
 - `.hackctl/` must stay gitignored.
-- Never commit `.hackctl/state.json` or other local runtime artifacts.
+- Never commit `.hackctl/state.json`, `.hackctl/deploy.json`, or other local runtime artifacts.
 
 ## AI Guidance Files
 
